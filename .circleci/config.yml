@@ -37,19 +37,23 @@ jobs:
           command: |
             .circleci/push_sck_artifacts.sh
 
-      - run:
-          name: Deploy k8s connector
-          command: |
-            .circleci/deploy_connector.sh
+#      - run:
+#          name: Deploy k8s connector
+#          command: |
+#            .circleci/deploy_connector.sh
+#
+#      - run:
+#          name: Run functional tests
+#          command: |
+#            .circleci/run_functional_tests.sh
+#
+#      - run:
+#          name:  Teardown deployment
+#          command: |
+#            helm delete --purge ci-$CIRCLE_SHA1
 
       - run:
-          name: Run functional tests
+          name:  Perf deployment
           command: |
-            .circleci/run_functional_tests.sh
-
-      - run:
-          name:  Teardown deployment
-          command: |
-            helm delete --purge ci-$CIRCLE_SHA1
-
-
+            .circleci/perf_deploy_sck.sh --deploy
+            .circleci/perf_deploy_sck.sh --deploy_data_gen "perf-test-first-run-feb19 default 5 100000 128 10000"
