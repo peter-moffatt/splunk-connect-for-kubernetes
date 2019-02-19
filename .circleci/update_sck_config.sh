@@ -10,7 +10,7 @@ sudo mv yq_linux_amd64 /usr/local/bin/yq
 yq w -i .circleci/sck_values.yml global.splunk.hec.host $SPLUNK_HEC_HOST
 yq w -i .circleci/sck_values.yml global.splunk.hec.token $SPLUNK_HEC_TOKEN
 yq w -i .circleci/perf_test_sck_values.yml global.splunk.hec.host $SPLUNK_HEC_HOST_PERF
-yq w -i .circleci/perf_test/perf_test_sck_values.yml global.splunk.hec.token $SPLUNK_HEC_TOKEN_PERF
+yq w -i .circleci/perf_test_sck_values.yml global.splunk.hec.token $SPLUNK_HEC_TOKEN_PERF
 
 #Pull docker images locally
 aws ecr get-login --region $AWS_REGION --no-include-email | bash
