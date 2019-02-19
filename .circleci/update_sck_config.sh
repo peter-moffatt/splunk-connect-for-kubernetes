@@ -30,7 +30,7 @@ yq w -i .circleci/perf_test_sck_values.yml splunk-kubernetes-metrics.image.name 
 
 image_name=$(echo "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/k8s-ci-metrics-agg:latest")
 yq w -i .circleci/sck_values.yml splunk-kubernetes-metrics.imageAgg.name $image_name
-yq w -i circleci/perf_test_sck_values.yml splunk-kubernetes-metrics.imageAgg.name $image_name
+yq w -i .circleci/perf_test_sck_values.yml splunk-kubernetes-metrics.imageAgg.name $image_name
 
 image_name=$(echo "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/k8s-ci-objects:latest")
 yq w -i .circleci/sck_values.yml splunk-kubernetes-objects.image.name $image_name
