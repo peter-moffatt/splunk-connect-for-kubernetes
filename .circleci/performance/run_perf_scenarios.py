@@ -9,7 +9,7 @@ logging.basicConfig(
     format='%(asctime)-15s mod=%(module)s func=%(funcName)s line=%(lineno)d %(message)s',
     level=logging.INFO)
 
-PERF_YAML_FILE = "perf_test_sck_values.yml"
+PERF_YAML_FILE = ".circleci/performance/perf_test_sck_values.yml"
 
 # Lookup configurables for datagen - https://github.com/dtregonning/kafka-data-gen
 DATAGEN_PERF_CASES = [
