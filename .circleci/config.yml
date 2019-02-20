@@ -102,8 +102,11 @@ workflows:
   version: 2
   build_perf-test:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              ignore: perf*
       - perf-test:
           filters:
             branches:
-              only: perf*
+              only: perf-testing
