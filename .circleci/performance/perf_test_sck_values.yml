@@ -11,6 +11,7 @@ splunk-kubernetes-logging:
   kubernetes:
     insecureSSL: true
   splunk:
+
     hec:
       indexName: perf_test_events
   image:

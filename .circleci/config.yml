@@ -89,8 +89,8 @@ jobs:
       - run:
           name:  Deploy k8s connector for perf-tests
           command: |
-            .circleci/perf_deploy_sck.sh --deploy
-            .circleci/perf_deploy_sck.sh --deploy_data_gen "perf-test-first-run-feb19 default 5 100000 128 10000"
+            .circleci/performance/perf_deploy_sck.sh --deploy
+            .circleci/performance/perf_deploy_sck.sh --deploy_data_gen "perf-test-first-run-feb19 default 5 100000 128 10000"
 
 # Need to add this step
 #      - run:
@@ -105,7 +105,7 @@ workflows:
       - build:
           filters:
             branches:
-              ignore: perf*
+              ignore: perf-testing
       - perf-test:
           filters:
             branches:
