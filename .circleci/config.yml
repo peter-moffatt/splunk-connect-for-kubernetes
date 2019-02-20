@@ -76,8 +76,7 @@ jobs:
       - run:
           name:  Deploy k8s connector for perf-tests
           command: |
-            .circleci/performance/perf_deploy_sck.sh --deploy
-            .circleci/performance/perf_deploy_sck.sh --deploy_data_gen "k8s-perf-test-feb20 default 10 1000000 128 1000"
+            python .circleci/performance/run_perf_scenarios.py
 
 # Need to add teardown step
 
