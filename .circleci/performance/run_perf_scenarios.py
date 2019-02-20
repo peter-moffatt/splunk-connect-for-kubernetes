@@ -114,18 +114,18 @@ def read_and_modify_yaml(test_case_connector):
 def setup_connector_and_datagen(test_case_datagen, test_case_connector):
     logging.info('Setup connector and datagen - test_case_datagen - {} - test_case_connector - {}'.format(test_case_datagen, test_case_connector))
     read_and_modify_yaml(test_case_connector)
-    subprocess.call('./perf_deploy_sck.sh --deploy', shell=True)
+    subprocess.call('.circleci/performance/perf_deploy_sck.sh --deploy', shell=True)
     # "DEPLOYMENT_NAME NAMESPACE NUMBER_OF_REPLICAS MSG_COUNT MSG_SIZE EPS"
-    subprocess.call('./perf_deploy_sck.sh --deploy_data_gen \"{} {} {} {} {} {}\"'.format(
+    subprocess.call('.circleci/performance/perf_deploy_sck.sh --deploy_data_gen \"{} {} {} {} {} {}\"'.format(
         test_case_datagen['deployment_name'], test_case_datagen['namespace'], test_case_datagen['number_of_datagen'],
         test_case_datagen['message_count'], test_case_datagen['message_size'], test_case_datagen['eps']), shell=True)
 
 
 def teardown_connector_and_datagen(test_case_datagen, test_case_connector):
     logging.info('Teardown connector and datagen - test_case_datagen - {} - test_case_connector - {}'.format(test_case_datagen, test_case_connector))
-    subprocess.call('./perf_deploy_sck.sh --clean', shell=True)
+    subprocess.call('.circleci/performance/perf_deploy_sck.sh --clean', shell=True)
     # "DEPLOYMENT_NAME NAMESPACE NUMBER_OF_REPLICAS"
-    subprocess.call('./perf_deploy_sck.sh --clean_data_gen \"{} {} {}\"'.format(
+    subprocess.call('.circleci/performance/perf_deploy_sck.sh --clean_data_gen \"{} {} {}\"'.format(
         test_case_datagen['deployment_name'], test_case_datagen['namespace'], test_case_datagen['number_of_datagen']),
         shell=True)
 
