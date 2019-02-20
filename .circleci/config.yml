@@ -78,19 +78,21 @@ jobs:
           name: Update configurables to build artifacts
           command: |
             .circleci/update_sck_config.sh
+#      - run:
+#          name: Build SCK artifacts
+#          command: |
+#            .circleci/build_sck_artifacts.sh
       - run:
-          name: Build SCK artifacts
+          name: Pull SCK artifacts from s3
           command: |
-            .circleci/build_sck_artifacts.sh
-      - run:
-          name: Push SCK artifacts to s3
-          command: |
-            .circleci/push_sck_artifacts.sh
+            echo "Pulling SCK artifacts from s3..."
+            mkdir helm-artifacts
+            aws s3 cp s3://k8s-ci-artifacts/helm-artifacts/* helm-artifacts/
       - run:
           name:  Deploy k8s connector for perf-tests
           command: |
             .circleci/performance/perf_deploy_sck.sh --deploy
-            .circleci/performance/perf_deploy_sck.sh --deploy_data_gen "perf-test-first-run-feb19 default 5 100000 128 10000"
+            .circleci/performance/perf_deploy_sck.sh --deploy_data_gen "k8s-perf-test-feb20 default 10 1000000 128 1000"
 
 # Need to add this step
 #      - run:
