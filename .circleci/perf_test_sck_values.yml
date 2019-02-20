@@ -2,7 +2,7 @@ global:
   logLevel: info
   splunk:
     hec:
-      protocol: https
+      protocol: http
       insecureSSL: true
       host: $SPLUNK_HEC_HOST_PERF
       token: $SPLUNK_HEC_TOKEN_PERF
