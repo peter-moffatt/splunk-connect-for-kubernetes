@@ -19,8 +19,7 @@ function setup_kubeclient ()
     sudo mv ./kubectl /usr/local/bin/kubectl
     sudo apt-get -y install gnupg
     sudo mkdir ~/.kube
-    export GPG_TTY=$(tty)
-    echo $GPG_KEY | gpg --output config --passphrase-fd 0 --decrypt .circleci/performance/kubeconfig_perf.gpg
+    echo $GPG_KEY | gpg --output config --passphrase-fd 0 --decrypt --batch .circleci/performance/kubeconfig_perf.gpg
     sudo mv config ~/.kube/config
 
 }
