@@ -20,7 +20,7 @@ DATAGEN_PERF_CASES = [
         'message_count': 1,
         'message_size': 1,
         'eps': 500,
-        'sleep_duration': 5
+        'sleep_duration': 300
     },
 ]
 
@@ -141,7 +141,7 @@ def _do_perf():
             logging.info('Executing perf case: {} {}'.format(test_case_datagen, test_case_connector))
             setup_connector_and_datagen(test_case_datagen, test_case_connector)
             wait_for_connector_do_data_collection_injection(test_case_datagen)
-            teardown_connector_and_datagen(test_case_datagen, test_case_connector)
+            #teardown_connector_and_datagen(test_case_datagen, test_case_connector)
 
 
 def main():
