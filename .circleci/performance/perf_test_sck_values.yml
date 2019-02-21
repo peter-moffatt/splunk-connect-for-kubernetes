@@ -8,7 +8,7 @@ global:
       token: $SPLUNK_HEC_TOKEN_PERF
 splunk-kubernetes-logging:
   buffer:
-    '@type': memory
+    "@type": memory
     chunk_limit_records: 100000
     chunk_limit_size: 200m
     flush_interval: 5s
@@ -41,7 +41,7 @@ splunk-kubernetes-metrics:
     retry_max_times: 3
     total_limit_size: 400m
   buffer:
-    '@type': memory
+    "@type": memory
     chunk_limit_records: 1000000
     chunk_limit_size: 100m
     flush_interval: 5s
@@ -68,7 +68,7 @@ splunk-kubernetes-metrics:
       indexName: perf_test_metrics
 splunk-kubernetes-objects:
   buffer:
-    '@type': memory
+    "@type": memory
     chunk_limit_records: 10000
     chunk_limit_size: 200m
     flush_interval: 3s

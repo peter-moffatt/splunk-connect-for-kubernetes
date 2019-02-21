@@ -17,8 +17,8 @@ DATAGEN_PERF_CASES = [
         'deployment_name': 'perf-test-datagen',
         'namespace': 'default',
         'number_of_datagen': 3,
-        'message_count': 1,
-        'message_size': 1,
+        'message_count': 10000,
+        'message_size': 256,
         'eps': 500,
         'sleep_duration': 300
     },
@@ -51,10 +51,10 @@ def read_and_modify_yaml(test_case_connector):
 
     logging.info('Yaml file is - {}'.format(perf_deploy_yaml))
     # buffer_type
-    perf_deploy_yaml["splunk-kubernetes-logging"]["buffer"]["'@type'"] = test_case_connector['buffer_type']
-    perf_deploy_yaml["splunk-kubernetes-metrics"]["buffer"]["'@type'"] = test_case_connector['buffer_type']
-    perf_deploy_yaml["splunk-kubernetes-metrics"]["aggregatorBuffer"]["'@type'"] = test_case_connector['buffer_type']
-    perf_deploy_yaml["splunk-kubernetes-objects"]["buffer"]["'@type'"] = test_case_connector['buffer_type']
+    perf_deploy_yaml["splunk-kubernetes-logging"]["buffer"]["\"@type\""] = test_case_connector['buffer_type']
+    perf_deploy_yaml["splunk-kubernetes-metrics"]["buffer"]["\"@type\""] = test_case_connector['buffer_type']
+    perf_deploy_yaml["splunk-kubernetes-metrics"]["aggregatorBuffer"]["\"@type\""] = test_case_connector['buffer_type']
+    perf_deploy_yaml["splunk-kubernetes-objects"]["buffer"]["\"@type\""] = test_case_connector['buffer_type']
     # total_limit_size
     perf_deploy_yaml["splunk-kubernetes-logging"]["buffer"]["total_limit_size"] = test_case_connector['total_limit_size']
     perf_deploy_yaml["splunk-kubernetes-metrics"]["buffer"]["total_limit_size"] = test_case_connector['total_limit_size']
