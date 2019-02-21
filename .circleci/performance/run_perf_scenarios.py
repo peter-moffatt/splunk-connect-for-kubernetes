@@ -14,7 +14,7 @@ PERF_YAML_FILE = ".circleci/performance/perf_test_sck_values.yml"
 # Lookup configurables for datagen - https://github.com/dtregonning/kafka-data-gen
 DATAGEN_PERF_CASES = [
     {
-        'deployment_name': 'perf_test_base',
+        'deployment_name': 'perf-test-datagen',
         'namespace': 'default',
         'number_of_datagen': 3,
         'message_count': 1,
@@ -140,8 +140,8 @@ def _do_perf():
         for test_case_connector in CONNECTOR_PERF_CASES:
             logging.info('Executing perf case: {} {}'.format(test_case_datagen, test_case_connector))
             setup_connector_and_datagen(test_case_datagen, test_case_connector)
-            # wait_for_connector_do_data_collection_injection(test_case_datagen)
-            # teardown_connector_and_datagen(test_case_datagen, test_case_connector)
+            wait_for_connector_do_data_collection_injection(test_case_datagen)
+            teardown_connector_and_datagen(test_case_datagen, test_case_connector)
 
 
 def main():
